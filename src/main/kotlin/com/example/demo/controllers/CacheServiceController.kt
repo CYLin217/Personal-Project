@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("SainSku")
 class CacheServiceController {
 
+
     @GetMapping("/queryBySainSku/{value}")
     fun getCacheService(@RequestParam("value") value: String): String{
         return value
