@@ -1,9 +1,7 @@
 package com.example.demo.config
 
-import com.example.demo.dto.PersonalProjectDto
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.common.serialization.StringDeserializer
-import org.apache.kafka.common.serialization.StringSerializer
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.kafka.annotation.EnableKafka
@@ -27,8 +25,8 @@ class KafkaConsumerConfiguration {
         config[ConsumerConfig.GROUP_ID_CONFIG] = "group_id"
         config[ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG] = StringDeserializer::class.java
         config[ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG] = JsonDeserializer::class.java
-        config[JsonSerializer.TYPE_MAPPINGS] =  "personalProjectDto:com.example.demo.dto.PersonalProjectDto"
-        config[JsonDeserializer.VALUE_DEFAULT_TYPE] =  "com.example.demo.dto.PersonalProjectDto"
+        config[JsonSerializer.TYPE_MAPPINGS] =  "personalProjectDto:com.example.demo.dto.outbound.PersonalProjectDto"
+        config[JsonDeserializer.VALUE_DEFAULT_TYPE] =  "com.example.demo.dto.outbound.PersonalProjectDto"
         config[ErrorHandlingDeserializer.KEY_DESERIALIZER_CLASS] = StringDeserializer::class.java
         config[ErrorHandlingDeserializer.VALUE_DESERIALIZER_CLASS] = JsonDeserializer::class.java
 

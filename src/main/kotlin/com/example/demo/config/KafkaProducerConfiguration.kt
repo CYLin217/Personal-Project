@@ -1,6 +1,6 @@
 package com.example.demo.config
 
-import com.example.demo.dto.PersonalProjectDto
+import com.example.demo.dto.outbound.ProductDescriptionDto
 import org.apache.kafka.clients.producer.ProducerConfig
 import org.apache.kafka.common.serialization.StringSerializer
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties
@@ -16,7 +16,7 @@ import org.springframework.kafka.support.serializer.JsonSerializer
 class KafkaProducerConfiguration(private val kafkaProperties: KafkaProperties ) {
 
     @Bean
-    fun producerFactory(): ProducerFactory<String, PersonalProjectDto> {
+    fun producerFactory(): ProducerFactory<String, ProductDescriptionDto> {
 
         var config = HashMap<String, Any>()
 
@@ -28,7 +28,7 @@ class KafkaProducerConfiguration(private val kafkaProperties: KafkaProperties ) 
     }
 
     @Bean("kafkaTemplate")
-    fun kafkaTemplate(): KafkaTemplate<String, PersonalProjectDto> {
+    fun kafkaTemplate(): KafkaTemplate<String, ProductDescriptionDto> {
         return KafkaTemplate(producerFactory())
     }
 

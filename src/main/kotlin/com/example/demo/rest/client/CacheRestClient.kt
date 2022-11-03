@@ -2,6 +2,8 @@ package com.example.demo.rest.client
 
 import com.example.demo.config.CacheFeignClientConfig
 import com.example.demo.dto.FinalDataDto
+import com.example.demo.dto.ProductCache
+import feign.Response
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -13,6 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam
 interface CacheRestClient {
 
     @GetMapping(value = ["/v1/api/cache/queryBySainSku/{sainsburysSku}"])
-    fun getProductCacheWithSainsburySku(@RequestParam("sainsburysSku") sainsburysSku: String): FinalDataDto?
+    fun getProductCacheWithSainsburySku(@RequestParam("sainsburysSku") sainsburysSku: String): ProductCache?
 
 }
